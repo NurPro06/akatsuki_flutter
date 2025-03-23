@@ -1,6 +1,12 @@
-import 'package:akatsuki_flutter/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'home_screen.dart';
+import 'model.dart';
 
-void main() {
-  runApp(MaterialApp(home: HomeScreen(),));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(AkatsukiInfoAdapter());
+  await Hive.openBox<AkatsukiInfo>('akatsukiBox');
+  runApp(const MaterialApp(home: HomeScreen()));
 }
