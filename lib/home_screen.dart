@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/akatsuki_cubit.dart';
@@ -17,9 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Akatsuki List'),
-        ),
+        appBar: AppBar(title: const Text('Akatsuki List')),
         body: BlocBuilder<AkatsukiCubit, AkatsukiState>(
           bloc: cubit,
           builder: (context, state) {
@@ -57,6 +54,8 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             } else if (state is AkatsukiDataLoading) {
               return const Center(child: CircularProgressIndicator());
+            } else if (state is AkatsukiInitial) {
+              return const Center(child: Text('No data available yet'));
             } else {
               return const Center(child: Text('Failed to load data'));
             }
