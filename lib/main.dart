@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'home_screen.dart';
+import 'login_screen.dart';
 import 'model.dart';
 
 void main() async {
@@ -8,5 +8,5 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(AkatsukiInfoAdapter());
   await Hive.openBox<AkatsukiInfo>('akatsukiBox');
-  runApp(const MaterialApp(home: HomeScreen()));
+  runApp(const MaterialApp(home: LoginScreen()));
 }
